@@ -1,0 +1,44 @@
+<form [formGroup]="form" (ngSubmit)="save()">
+    <mat-card>
+      <mat-card-header>
+        <mat-card-title>Registro de Categoria</mat-card-title>
+      </mat-card-header>
+      <mat-card-content>
+        <div class="row">
+          <div class="col-xs">
+            <mat-form-field>
+              <mat-label>Nombre</mat-label>
+              <input placeholder="name" formControlName="name" matInput type="text">
+              <div *ngIf="nameField.touched && nameField.invalid">
+                <mat-error *ngIf="nameField.hasError('required')" >
+                  CAMPO ES OBLIGATORIO
+                </mat-error>
+                <mat-error *ngIf="nameField.hasError('not_available')" >
+                  YA EXISTE CATEGORIA CON ESTE NOMBRE
+                </mat-error>
+              </div>
+            </mat-form-field>
+          </div>
+        </div>
+        <div class="row">
+            <div class="col-xs">
+              <mat-form-field>
+                <mat-label>Imagen</mat-label>
+                <input placeholder="image" formControlName="image" matInput type="text">
+                <div *ngIf="imageField.touched && imageField.invalid">
+                    <mat-error *ngIf="imageField.hasError('required')" >
+                        CAMPO ES OBLIGATORIO
+                    </mat-error>
+                </div>
+              </mat-form-field>
+            </div>
+          </div>
+      </mat-card-content>
+      <mat-card-actions>
+        <button [disabled]="form.invalid" mat-raised-button type="submit">
+          <span *ngIf="isNew">Crear Categoria</span>
+          <span *ngIf="!isNew">Editar Categoria</span>
+        </button>
+      </mat-card-actions>
+    </mat-card>
+  </form>
