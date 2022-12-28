@@ -1,4 +1,4 @@
-import { map, catchError } from 'rxjs/operators';
+import { map, catchError, retry } from 'rxjs/operators';
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 
@@ -102,11 +102,12 @@ export class ProductsService {
 
 
   getRandom(): Observable<User[]>{
-    return this.http.get('https://randomusers.me/api/?results=2')
+    return this.http.get('https://randomuser.me/api/?results=2')
     .pipe(
 /*      catchError(error => {
         return throwError('error al procesar')
       }),*/
+      retry(3),
       catchError(this.handleError),
       map((res : any) => res.results as User[])
     );
@@ -116,5 +117,9 @@ export class ProductsService {
     console.log(error);
     Sentry.captureException(error);
     return throwError('algo salio mal');
+  }
+
+  getFile(){
+    return this.http.get('assets/files/test.txt', {responseType: 'text'});
   }
 }

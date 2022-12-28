@@ -17,10 +17,9 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { environment } from './../environments/environment';
 
 import * as Sentry from "@sentry/angular";
-import { BrowserTracing } from "@sentry/tracing";
 
 Sentry.init({
-  dsn: "https://eb813e3f884045738ba6becc63e69514@o554573.ingest.sentry.io/4504408671977472",
+  //dsn: "https://eb813e3f884045738ba6becc63e69514@o554573.ingest.sentry.io/4504408671977472",
   /*integrations: [
     new BrowserTracing({
       tracePropagationTargets: ["localhost", "https://yourserver.io/api"],

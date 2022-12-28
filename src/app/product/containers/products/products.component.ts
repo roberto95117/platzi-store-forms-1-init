@@ -3,6 +3,8 @@ import { Component, OnInit } from '@angular/core';
 import { Product } from '@core/models/product.model';
 import { ProductsService } from '@core/services/products/products.service';
 
+import * as FileSaver from 'file-saver';
+
 @Component({
   selector: 'app-products',
   templateUrl: './products.component.html',
@@ -19,6 +21,7 @@ export class ProductsComponent implements OnInit {
   ngOnInit() {
     this.fetchProducts();
     this.getRandomUsers();
+    this.getFile();
   }
 
   clickProduct(id: number) {
@@ -42,6 +45,15 @@ export class ProductsComponent implements OnInit {
       console.error(error);
     }
     );
+  }
+
+  getFile(){
+    this.productsService.getFile()
+    .subscribe((content) =>{
+      console.log(content);
+      var blob = new Blob([content], {type: 'text/plain;charset=utf-8'});
+      FileSaver.saveAs(blob, 'archivo.txt');
+    });
   }
 
 }
