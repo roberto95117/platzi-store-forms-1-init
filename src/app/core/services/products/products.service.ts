@@ -114,6 +114,7 @@ export class ProductsService {
 
   private handleError(error : HttpErrorResponse){
     console.log(error);
+    Sentry.captureException(error);
     return throwError('algo salio mal');
   }
 }
