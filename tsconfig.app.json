@@ -1,8 +1,15 @@
 {
   "extends": "./tsconfig.base.json",
   "compilerOptions": {
+    "baseUrl": "./",
     "outDir": "./out-tsc/app",
-    "types": []
+    "types": [],
+    "paths": {
+      "@core/*" : ["src/app/core/*"],
+      "@material/*" : ["src/app/material/*"] ,
+      "@shared/*" : ["src/app/shared/*"],
+      "@admin/*" : ["src/app/admin/*"]
+    }
   },
   "files": [
     "src/main.ts",
@@ -14,5 +21,8 @@
   "exclude": [
     "src/test.ts",
     "src/**/*.spec.ts"
-  ]
+  ],
+  "angularCompilerOptions": {
+    "enableIvy": true
+  }
 }

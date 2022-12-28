@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
-import { Product } from './../../../core/models/product.model';
-import { ProductsService } from './../../../core/services/products/products.service';
+import { Product } from '@core/models/product.model';
+import { ProductsService } from '@core/services/products/products.service';
 
 @Component({
   selector: 'app-products',
@@ -18,6 +18,7 @@ export class ProductsComponent implements OnInit {
 
   ngOnInit() {
     this.fetchProducts();
+    this.getRandomUsers();
   }
 
   clickProduct(id: number) {
@@ -30,6 +31,17 @@ export class ProductsComponent implements OnInit {
     .subscribe(products => {
       this.products = products;
     });
+  }
+
+  getRandomUsers(){
+    this.productsService.getRandom()
+    .subscribe((res) => {
+      console.log(res);
+    },
+    error => {
+      console.error(error);
+    }
+    );
   }
 
 }
