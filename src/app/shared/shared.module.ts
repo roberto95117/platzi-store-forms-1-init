@@ -11,7 +11,7 @@ import { CartComponent } from './components/cart/cart.component';
 
 import { MaterialModule } from './../material/material.module';
 import { StepperComponent } from './components/stepper/stepper.component';
-
+import { QuicklinkModule } from 'ngx-quicklink';
 @NgModule({
   declarations: [
     ExponentialPipe,
@@ -32,7 +32,8 @@ import { StepperComponent } from './components/stepper/stepper.component';
     CommonModule,
     RouterModule,
     MaterialModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    QuicklinkModule
   ]
 })
 export class SharedModule { }
