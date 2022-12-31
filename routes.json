@@ -1,0 +1,20 @@
+{
+  "/": {
+    "/home": 80,
+    "/products": 10,
+    "/admin": 10
+  },
+  "/home": {
+    "/": 100
+  },
+  "/products": {
+    "/": 80,
+    "/:id": 20
+  },
+  "/admin": {
+    "/": 20,
+    "/products": 30,
+    "/categories": 25,
+    "/basic": 25
+  }
+}
