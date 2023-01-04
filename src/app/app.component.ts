@@ -1,6 +1,7 @@
 import { NavigationEnd, Router } from '@angular/router';
-import { Component } from '@angular/core';
-import { filter} from 'rxjs/operators'
+import { Component, PLATFORM_ID, Inject} from '@angular/core';
+import { filter} from 'rxjs/operators';
+import { isPlatformBrowser } from '@angular/common';
 declare var gtag;
 @Component({
   selector: 'app-root',
@@ -10,20 +11,25 @@ declare var gtag;
 export class AppComponent {
 
   constructor(
-    private roter: Router
+    private roter: Router,
+    @Inject(PLATFORM_ID) private platFormId: Object
   ){
-    const navEndEvents$ =
-    this.roter.events
-    .pipe(
-      filter(event => event instanceof NavigationEnd)
-    );
 
-    navEndEvents$
-    .subscribe((event : NavigationEnd) => {
-      gtag('config', 'MEASUREMENT_ID'),{
-        page_path : event.urlAfterRedirects
-      }
-    });
+    if(isPlatformBrowser(this.platFormId)){
+      const navEndEvents$ =
+      this.roter.events
+      .pipe(
+        filter(event => event instanceof NavigationEnd)
+      );
+
+      navEndEvents$
+      .subscribe((event : NavigationEnd) => {
+        gtag('config', 'MEASUREMENT_ID'),{
+          page_path : event.urlAfterRedirects
+        }
+      });
+    }
+
 
   }
 

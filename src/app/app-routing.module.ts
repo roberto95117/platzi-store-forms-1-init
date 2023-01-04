@@ -61,13 +61,12 @@ const routes: Routes = [
 @NgModule({
   imports: [RouterModule.forRoot(routes, {
     //preloadingStrategy: PreloadAllModules
-
     //propia preload
     //preloadingStrategy: PreloadService
-
     //con quicklink
-    preloadingStrategy: QuicklinkStrategy
-  })],
+    preloadingStrategy: QuicklinkStrategy,
+    initialNavigation: 'enabled'
+})],
   exports: [RouterModule]
 })
 export class AppRoutingModule { }
