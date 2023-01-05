@@ -12,6 +12,7 @@ import { CartComponent } from './components/cart/cart.component';
 import { MaterialModule } from './../material/material.module';
 import { StepperComponent } from './components/stepper/stepper.component';
 import { QuicklinkModule } from 'ngx-quicklink';
+import { FibonacciPipe } from './pipes/fibonacci.pipe';
 @NgModule({
   declarations: [
     ExponentialPipe,
@@ -19,14 +20,16 @@ import { QuicklinkModule } from 'ngx-quicklink';
     HeaderComponent,
     FooterComponent,
     CartComponent,
-    StepperComponent
+    StepperComponent,
+    FibonacciPipe
   ],
   exports: [
     ExponentialPipe,
     HighlightDirective,
     HeaderComponent,
     FooterComponent,
-    StepperComponent
+    StepperComponent,
+    FibonacciPipe
   ],
   imports: [
     CommonModule,
