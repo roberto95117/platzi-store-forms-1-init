@@ -1,4 +1,48 @@
 
 <app-banner></app-banner>
+<p *ngIf="mostrar; else esElse">soy true</p>
+<ng-template #esElse>
+  soy else
+</ng-template>
+<button (click)="mostrar = !mostrar">Mostrar / ocultar</button>
+<h1>{{mostrar}}</h1>
+<ul>
+  <li *ngFor="let item of nombres; index as i">
+    {{i}} - {{item}}
+  </li>
+</ul>
+<ul>
+  <li *ngFor="let item of emojis; index as i">
+    {{i}} - {{item}}
+  </li>
+</ul>
 
+<div [ngSwitch]="tipo">
+  <p [style.background-color]="'blue'" *ngSwitchCase="'A'">{{tipo}}</p>
+  <p *ngSwitchCase="'B'">{{tipo}}</p>
+  <p *ngSwitchCase="'C'">{{tipo}}</p>
+  <p *ngSwitchCase="'D'">{{tipo}}</p>
+  <p *ngSwitchDefault>no one</p>
+</div>
+
+<hr [ngClass]="{
+  'a-class': 'mostrar',
+  'b-class': '!mostrar'
+}" />
+
+<div>
+  <input type="number"  [(ngModel)]="heigh" />
+  <input type="number"  [(ngModel)]="widt" />
+  <input type="color"  [(ngModel)]="back" />
+</div>
+<div [ngStyle]="{
+  'width.px': widt,
+  'height.px': heigh,
+  'background-color': back
+}">
+</div>
+
+{{Math.pow(2,2)}}
+{{1+1}}
+{{[1,2].reverse()}}
 <app-search></app-search>
